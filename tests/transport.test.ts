@@ -3,6 +3,7 @@ import { CtgovClient, FIELDS } from '../src/ctgov.js';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 import { fileURLToPath } from 'node:url';
+import { tmpdir } from 'node:os';
 
 const data = { protocolSection: { identificationModule: { nctId: 'NCT00000000', briefTitle: 'Synthetic fixture' }, statusModule: { overallStatus: 'RECRUITING' }, eligibilityModule: { eligibilityCriteria: 'Age 18 years', minimumAge: '18 Years', healthyVolunteers: false, sex: 'ALL' } } };
 
@@ -56,7 +57,7 @@ describe('API fields, filters, validation and shared throttling', () => {
 });
 
 it('starts the real stdio server, initializes MCP and lists both tools', async () => {
-  const transport = new StdioClientTransport({ command: process.execPath, args: ['--import', 'tsx', fileURLToPath(new URL('../mcp/server.ts', import.meta.url))], stderr: 'pipe' });
+  const transport = new StdioClientTransport({ command: process.execPath, args: ['--import', 'tsx', fileURLToPath(new URL('../mcp/server.ts', import.meta.url))], env: { TMPDIR: tmpdir() }, stderr: 'pipe' });
   const client = new Client({ name: 'synthetic-test-client', version: '1.0.0' });
   try {
     await client.connect(transport);

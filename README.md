@@ -83,9 +83,9 @@ The headless tests use explicitly invented software fixtures. They cover search/
 
 ## GitHub Pages
 
-[.github/workflows/pages.yml](.github/workflows/pages.yml) uses official GitHub actions pinned to full commit SHAs, with release versions in comments. It installs locked dependencies, runs the core tests, builds, runs headless Chromium tests, and uploads **only `dist/site/`**. Deployment is skipped while the repository is private.
+[.github/workflows/pages.yml](.github/workflows/pages.yml) uses official GitHub actions pinned to full commit SHAs, with release versions in comments. It installs locked dependencies, runs the core tests, builds, runs headless Chromium tests, and uploads **only `dist/site/`**. The repository is public and the live demo is available on GitHub Pages.
 
-When ready, the repository owner can make the repository public, set **Settings → Pages → Build and deployment → Source: GitHub Actions**, and run the workflow (or push to `main`). If the default branch differs, update the workflow trigger. The deployment job uses the `github-pages` environment and narrowly scoped Pages/OIDC permissions. No push or deployment is needed for local development. Workflow guidance: [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+Pages uses **Settings → Pages → Build and deployment → Source: GitHub Actions**. The workflow can run manually or on a push to `main`. If the default branch differs, update the workflow trigger. The deployment job uses the `github-pages` environment and narrowly scoped Pages/OIDC permissions. No push or deployment is needed for local development. Workflow guidance: [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
 ## Modules and output contract
 
