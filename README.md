@@ -50,7 +50,7 @@ No API key is needed for ClinicalTrials.gov. Every search and NCT lookup makes a
 
 ## Web app
 
-**Planned live URL:** <https://driedsandwich.github.io/trial-questions/>. This is a deployment target, not a claim that the site is already published.
+**Live demo:** <https://driedsandwich.github.io/trial-questions/> (GitHub Pages, built from `main` by the Pages workflow).
 
 1. Enter a condition, or use **Asthma**, **Type 2 diabetes**, or **Breast cancer** to fill the input. Add a city, state, or country if helpful, then choose **Find trials**.
 2. Choose a recruiting study. Cards show its title, NCT ID, registry status, and reported location. Searches support **Load more trials**. Results retain registry order and are not recommendations.
@@ -184,6 +184,8 @@ Code is MIT licensed. That license does not relicense registry data or third-par
 ## Evaluation and limitations
 
 [eval/RESULTS.md](eval/RESULTS.md) contains measured results from five conditions and ten distinct recruiting records per condition, with sample IDs, denominators, observed heading spellings, numeric-check failures, and paired Flesch–Kincaid grades. The evaluation uses a **synthetic** age of 45 and sex FEMALE, never a real patient's information. Source snapshots are deleted; IDs and aggregate/derived measurements remain. Later runs can differ because registry data changes. Flesch–Kincaid uses an explicitly documented syllable heuristic and is not a patient-comprehension score. The report does not claim parser accuracy against a clinician-labeled dataset.
+
+[eval/LLM_RESULTS.md](eval/LLM_RESULTS.md) measures the optional AI rewriting path on a live sample (the first two inclusion and exclusion items of each sampled trial) with the same number, claim and question-shape gates. Run it with your own provider: `LLM_ENDPOINT=… LLM_MODEL=… LLM_API_KEY=… npx tsx eval/llm-run.ts`. Only aggregate counts are stored.
 
 `npm test` uses invented fixtures only, including heading variants, missing headings, nested lists, offsets, repeated/missing/changed numbers and units, forbidden claims, LLM opt-in/fallback behavior, narrow structured comparisons, handout notices/escaping, request spacing, and a real stdio MCP handshake. No tests require network access or secrets.
 
