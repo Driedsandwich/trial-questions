@@ -1,0 +1,53 @@
+{
+  "name": "trial-questions",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ClinicalTrials.gov criteria as questions to discuss with a doctor, never eligibility decisions",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
+  "files": [
+    "dist/src",
+    "dist/mcp",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:core && tsc -p tsconfig.web.json && vite build",
+    "test": "vitest run",
+    "start": "tsx mcp/server.ts",
+    "mcp": "tsx mcp/server.ts",
+    "eval": "tsx eval/run.ts",
+    "check:sources": "tsx scripts/check-sources.ts",
+    "dev": "vite",
+    "build:core": "tsc -p tsconfig.json",
+    "preview": "vite preview",
+    "test:ui": "playwright test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.65.0",
+    "@types/node": "22.19.15",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.2.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.6",
+    "vitest": "5.1.0"
+  }
+}

@@ -1,0 +1,14 @@
+.DS_Store
+.env
+.env*
+*.local
+*.tgz
+coverage/
+dist/
+eval/.tmp/
+node_modules/
+test-results/
+playwright-report/
+# Live screenshots and handouts belong outside the repository.
+docs/screenshots/*.png
+docs/screenshots/*.pdf
